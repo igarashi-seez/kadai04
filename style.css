@@ -1,0 +1,21 @@
+button {
+  cursor: pointer;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.type {
+  background: red;
+  color: #fff;
+  font-size: 0.8rem;
+  margin-left: 0.3em;
+}
+
+._current {
+  font-weight: 700;
+  color: red;
+}
+
+._hidden {
+  display: none;
+}
