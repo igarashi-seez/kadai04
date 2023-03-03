@@ -1,4 +1,7 @@
-button {
+#pagenation button {
+  appearance: none;
+  border: none;
+  background: transparent;
   cursor: pointer;
   padding-left: 0.5em;
   padding-right: 0.5em;

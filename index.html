@@ -5,118 +5,144 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>課題04</title>
-  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <form class="search">
+    <input id="searchText" type="text" value="くさ">
+    <button id="searchButton">検索</button>
+  </form>
+  <select id="typeSelect">
+    <option value="すべて">すべて</option>
+    <option value="ノーマル">ノーマル</option>
+    <option value="ほのお">ほのお</option>
+    <option value="みず">みず</option>
+    <option value="くさ">くさ</option>
+    <option value="でんき">でんき</option>
+    <option value="こおり">こおり</option>
+    <option value="かくとう">かくとう</option>
+    <option value="どく">どく</option>
+    <option value="じめん">じめん</option>
+    <option value="ひこう">ひこう</option>
+    <option value="エスパー">エスパー</option>
+    <option value="むし">むし</option>
+    <option value="いわ">いわ</option>
+    <option value="ゴースト">ゴースト</option>
+    <option value="ドラゴン">ドラゴン</option>
+    <option value="あく">あく</option>
+    <option value="はがね">はがね</option>
+    <option value="フェアリー">フェアリー</option>
+  </select>
+  
+
   <div id="pagenation"></div>
 
   <ul id="list">
-    <li class="_hidden" data-type="くさ">ニャオハ<span class="type">くさ</span></li>
-    <li class="_hidden" data-type="くさ">ニャローテ<span class="type">くさ</span></li>
-    <li class="_hidden" data-type="くさ あく">マスカーニャ<span class="type">くさ</span><span class="type">あく</span></li>
-    <li class="_hidden" data-type="ほのお">ホゲータ<span class="type">ほのお</span></li>
-    <li class="_hidden" data-type="ほのお">アチゲータ<span class="type">ほのお</span></li>
-    <li class="_hidden" data-type="ほのお ゴースト">ラウドボーン<span class="type">ほのお</span><span class="type">ゴースト</span></li>
-    <li class="_hidden" data-type="みず">クワッス<span class="type">みず</span></li>
-    <li class="_hidden" data-type="みず">ウェルカモ<span class="type">みず</span></li>
-    <li class="_hidden" data-type="みず かくとう">ウェーニバル<span class="type">みず</span><span class="type">かくとう</span></li>
-    <li class="_hidden" data-type="ノーマル">グルトン<span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="ノーマル">パフュートン<span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="むし">タマンチュラ<span class="type">むし</span></li>
-    <li class="_hidden" data-type="むし">ワナイダー<span class="type">むし</span></li>
-    <li class="_hidden" data-type="むし">マメバッタ<span class="type">むし</span></li>
-    <li class="_hidden" data-type="むし あく">エクスレッグ<span class="type">むし</span><span class="type">あく</span></li>
-    <li class="_hidden" data-type="でんき">パモ<span class="type">でんき</span></li>
-    <li class="_hidden" data-type="でんき かくとう">パモット<span class="type">でんき</span><span class="type">かくとう</span></li>
-    <li class="_hidden" data-type="でんき かくとう">パーモット<span class="type">でんき</span><span class="type">かくとう</span></li>
-    <li class="_hidden" data-type="ノーマル">ワッカネズミ<span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="ノーマル">イッカネズミ<span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="フェアリー">パピモッチ<span class="type">フェアリー</span></li>
-    <li class="_hidden" data-type="フェアリー">バウッツェル<span class="type">フェアリー</span></li>
-    <li class="_hidden" data-type="くさ ノーマル">ミニーブ<span class="type">くさ</span><span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="くさ ノーマル">オリーニョ<span class="type">くさ</span><span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="くさ ノーマル">オリーヴァ<span class="type">くさ</span><span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="ノーマル ひこう">イキリンコ<span class="type">ノーマル</span><span class="type">ひこう</span></li>
-    <li class="_hidden" data-type="いわ">コジオ<span class="type">いわ</span></li>
-    <li class="_hidden" data-type="いわ">ジオヅム<span class="type">いわ</span></li>
-    <li class="_hidden" data-type="いわ">キョジオーン<span class="type">いわ</span></li>
-    <li class="_hidden" data-type="ほのお">カルボウ<span class="type">ほのお</span></li>
-    <li class="_hidden" data-type="ほのお エスパー">グレンアルマ<span class="type">ほのお</span><span class="type">エスパー</span></li>
-    <li class="_hidden" data-type="ほのお ゴースト">ソウブレイズ<span class="type">ほのお</span><span class="type">ゴースト</span></li>
-    <li class="_hidden" data-type="でんき">ズピカ<span class="type">でんき</span></li>
-    <li class="_hidden" data-type="でんき">ハラバリー<span class="type">でんき</span></li>
-    <li class="_hidden" data-type="でんき ひこう">カイデン<span class="type">でんき</span><span class="type">ひこう</span></li>
-    <li class="_hidden" data-type="でんき ひこう">タイカイデン<span class="type">でんき</span><span class="type">ひこう</span></li>
-    <li class="_hidden" data-type="あく">オラチフ<span class="type">あく</span></li>
-    <li class="_hidden" data-type="あく">マフィティフ<span class="type">あく</span></li>
-    <li class="_hidden" data-type="どく ノーマル">シルシュルー<span class="type">どく</span><span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="どく ノーマル">タギングル<span class="type">どく</span><span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="くさ ゴースト">アノクサ<span class="type">くさ</span><span class="type">ゴースト</span></li>
-    <li class="_hidden" data-type="くさ ゴースト">アノホラグサ<span class="type">くさ</span><span class="type">ゴースト</span></li>
-    <li class="_hidden" data-type="じめん くさ">ノノクラゲ<span class="type">じめん</span><span class="type">くさ</span></li>
-    <li class="_hidden" data-type="じめん くさ">リククラゲ<span class="type">じめん</span><span class="type">くさ</span></li>
-    <li class="_hidden" data-type="いわ">ガケガニ<span class="type">いわ</span></li>
-    <li class="_hidden" data-type="くさ">カプサイジ<span class="type">くさ</span></li>
-    <li class="_hidden" data-type="くさ ほのお">スコヴィラン<span class="type">くさ</span><span class="type">ほのお</span></li>
-    <li class="_hidden" data-type="むし">シガロコ<span class="type">むし</span></li>
-    <li class="_hidden" data-type="むし エスパー">ベラカス<span class="type">むし</span><span class="type">エスパー</span></li>
-    <li class="_hidden" data-type="エスパー">ヒラヒナ<span class="type">エスパー</span></li>
-    <li class="_hidden" data-type="エスパー">クエスパトラ<span class="type">エスパー</span></li>
-    <li class="_hidden" data-type="フェアリー はがね">カヌチャン<span class="type">フェアリー</span><span class="type">はがね</span></li>
-    <li class="_hidden" data-type="フェアリー はがね">ナカヌチャン<span class="type">フェアリー</span><span class="type">はがね</span></li>
-    <li class="_hidden" data-type="フェアリー はがね">デカヌチャン<span class="type">フェアリー</span><span class="type">はがね</span></li>
-    <li class="_hidden" data-type="みず">ウミディグダ<span class="type">みず</span></li>
-    <li class="_hidden" data-type="みず">ウミトリオ<span class="type">みず</span></li>
-    <li class="_hidden" data-type="ひこう あく">オトシドリ<span class="type">ひこう</span><span class="type">あく</span></li>
-    <li class="_hidden" data-type="みず">ナミイルカ<span class="type">みず</span></li>
-    <li class="_hidden" data-type="みず">イルカマン<span class="type">みず</span></li>
-    <li class="_hidden" data-type="はがね どく">ブロロン<span class="type">はがね</span><span class="type">どく</span></li>
-    <li class="_hidden" data-type="はがね どく">ブロロローム<span class="type">はがね</span><span class="type">どく</span></li>
-    <li class="_hidden" data-type="ドラゴン ノーマル">モトトカゲ<span class="type">ドラゴン</span><span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="はがね">ミミズズ<span class="type">はがね</span></li>
-    <li class="_hidden" data-type="いわ どく">キラーメ<span class="type">いわ</span><span class="type">どく</span></li>
-    <li class="_hidden" data-type="いわ どく">キラフロル<span class="type">いわ</span><span class="type">どく</span></li>
-    <li class="_hidden" data-type="ゴースト">ボチ<span class="type">ゴースト</span></li>
-    <li class="_hidden" data-type="ゴースト">ハカドッグ<span class="type">ゴースト</span></li>
-    <li class="_hidden" data-type="ひこう かくとう">カラミンゴ<span class="type">ひこう</span><span class="type">かくとう</span></li>
-    <li class="_hidden" data-type="こおり">アルクジラ<span class="type">こおり</span></li>
-    <li class="_hidden" data-type="こおり">ハルクジラ<span class="type">こおり</span></li>
-    <li class="_hidden" data-type="みず エスパー">ミガルーサ<span class="type">みず</span><span class="type">エスパー</span></li>
-    <li class="_hidden" data-type="みず">ヘイラッシャ<span class="type">みず</span></li>
-    <li class="_hidden" data-type="ドラゴン みず">シャリタツ<span class="type">ドラゴン</span><span class="type">みず</span></li>
-    <li class="_hidden" data-type="かくとう ゴースト">コノヨザル<span class="type">かくとう</span><span class="type">ゴースト</span></li>
-    <li class="_hidden" data-type="どく じめん">ドオー<span class="type">どく</span><span class="type">じめん</span></li>
-    <li class="_hidden" data-type="ノーマル エスパー">リキキリン<span class="type">ノーマル</span><span class="type">エスパー</span></li>
-    <li class="_hidden" data-type="ノーマル">ノココッチ<span class="type">ノーマル</span></li>
-    <li class="_hidden" data-type="あく はがね">ドドゲザン<span class="type">あく</span><span class="type">はがね</span></li>
-    <li class="_hidden" data-type="じめん かくとう">イダイナキバ<span class="type">じめん</span><span class="type">かくとう</span></li>
-    <li class="_hidden" data-type="フェアリー エスパー">サケブシッポ<span class="type">フェアリー</span><span class="type">エスパー</span></li>
-    <li class="_hidden" data-type="くさ あく">アラブルタケ<span class="type">くさ</span><span class="type">あく</span></li>
-    <li class="_hidden" data-type="ゴースト フェアリー">ハバタクカミ<span class="type">ゴースト</span><span class="type">フェアリー</span></li>
-    <li class="_hidden" data-type="むし かくとう">チヲハウハネ<span class="type">むし</span><span class="type">かくとう</span></li>
-    <li class="_hidden" data-type="でんき じめん">スナノケガワ<span class="type">でんき</span><span class="type">じめん</span></li>
-    <li class="_hidden" data-type="じめん はがね">テツノワダチ<span class="type">じめん</span><span class="type">はがね</span></li>
-    <li class="_hidden" data-type="こおり みず">テツノツツミ<span class="type">こおり</span><span class="type">みず</span></li>
-    <li class="_hidden" data-type="かくとう でんき">テツノカイナ<span class="type">かくとう</span><span class="type">でんき</span></li>
-    <li class="_hidden" data-type="あく ひこう">テツノコウベ<span class="type">あく</span><span class="type">ひこう</span></li>
-    <li class="_hidden" data-type="ほのお どく">テツノドクガ<span class="type">ほのお</span><span class="type">どく</span></li>
-    <li class="_hidden" data-type="いわ でんき">テツノイバラ<span class="type">いわ</span><span class="type">でんき</span></li>
-    <li class="_hidden" data-type="ドラゴン こおり">セビエ<span class="type">ドラゴン</span><span class="type">こおり</span></li>
-    <li class="_hidden" data-type="ドラゴン こおり">セゴール<span class="type">ドラゴン</span><span class="type">こおり</span></li>
-    <li class="_hidden" data-type="ドラゴン こおり">セグレイブ<span class="type">ドラゴン</span><span class="type">こおり</span></li>
-    <li class="_hidden" data-type="ゴースト">コレクレー<span class="type">ゴースト</span></li>
-    <li class="_hidden" data-type="はがね ゴースト">サーフゴー<span class="type">はがね</span><span class="type">ゴースト</span></li>
-    <li class="_hidden" data-type="あく くさ">チオンジェン<span class="type">あく</span><span class="type">くさ</span></li>
-    <li class="_hidden" data-type="あく こおり">パオジアン<span class="type">あく</span><span class="type">こおり</span></li>
-    <li class="_hidden" data-type="あく じめん">ディンルー<span class="type">あく</span><span class="type">じめん</span></li>
-    <li class="_hidden" data-type="あく ほのお">イーユイ<span class="type">あく</span><span class="type">ほのお</span></li>
-    <li class="_hidden" data-type="ドラゴン あく">トドロクツキ<span class="type">ドラゴン</span><span class="type">あく</span></li>
-    <li class="_hidden" data-type="フェアリー かくとう">テツノブジン<span class="type">フェアリー</span><span class="type">かくとう</span></li>
-    <li class="_hidden" data-type="かくとう ドラゴン">コライドン<span class="type">かくとう</span><span class="type">ドラゴン</span></li>
-    <li class="_hidden" data-type="でんき ドラゴン">ミライドン<span class="type">でんき</span><span class="type">ドラゴン</span></li>
-    <li class="_hidden" data-type="みず ドラゴン">ウネルミナモ<span class="type">みず</span><span class="type">ドラゴン</span></li>
-    <li class="_hidden" data-type="くさ エスパー">テツノイサハ<span class="type">くさ</span><span class="type">エスパー</span></li>
+    <li class="_hidden target" data-type="くさ">ニャオハ<span class="type">くさ</span></li>
+    <li class="_hidden target" data-type="くさ">ニャローテ<span class="type">くさ</span></li>
+    <li class="_hidden target" data-type="くさ あく">マスカーニャ<span class="type">くさ</span><span class="type">あく</span></li>
+    <li class="_hidden target" data-type="ほのお">ホゲータ<span class="type">ほのお</span></li>
+    <li class="_hidden target" data-type="ほのお">アチゲータ<span class="type">ほのお</span></li>
+    <li class="_hidden target" data-type="ほのお ゴースト">ラウドボーン<span class="type">ほのお</span><span class="type">ゴースト</span></li>
+    <li class="_hidden target" data-type="みず">クワッス<span class="type">みず</span></li>
+    <li class="_hidden target" data-type="みず">ウェルカモ<span class="type">みず</span></li>
+    <li class="_hidden target" data-type="みず かくとう">ウェーニバル<span class="type">みず</span><span class="type">かくとう</span></li>
+    <li class="_hidden target" data-type="ノーマル">グルトン<span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="ノーマル">パフュートン<span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="むし">タマンチュラ<span class="type">むし</span></li>
+    <li class="_hidden target" data-type="むし">ワナイダー<span class="type">むし</span></li>
+    <li class="_hidden target" data-type="むし">マメバッタ<span class="type">むし</span></li>
+    <li class="_hidden target" data-type="むし あく">エクスレッグ<span class="type">むし</span><span class="type">あく</span></li>
+    <li class="_hidden target" data-type="でんき">パモ<span class="type">でんき</span></li>
+    <li class="_hidden target" data-type="でんき かくとう">パモット<span class="type">でんき</span><span class="type">かくとう</span></li>
+    <li class="_hidden target" data-type="でんき かくとう">パーモット<span class="type">でんき</span><span class="type">かくとう</span></li>
+    <li class="_hidden target" data-type="ノーマル">ワッカネズミ<span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="ノーマル">イッカネズミ<span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="フェアリー">パピモッチ<span class="type">フェアリー</span></li>
+    <li class="_hidden target" data-type="フェアリー">バウッツェル<span class="type">フェアリー</span></li>
+    <li class="_hidden target" data-type="くさ ノーマル">ミニーブ<span class="type">くさ</span><span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="くさ ノーマル">オリーニョ<span class="type">くさ</span><span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="くさ ノーマル">オリーヴァ<span class="type">くさ</span><span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="ノーマル ひこう">イキリンコ<span class="type">ノーマル</span><span class="type">ひこう</span></li>
+    <li class="_hidden target" data-type="いわ">コジオ<span class="type">いわ</span></li>
+    <li class="_hidden target" data-type="いわ">ジオヅム<span class="type">いわ</span></li>
+    <li class="_hidden target" data-type="いわ">キョジオーン<span class="type">いわ</span></li>
+    <li class="_hidden target" data-type="ほのお">カルボウ<span class="type">ほのお</span></li>
+    <li class="_hidden target" data-type="ほのお エスパー">グレンアルマ<span class="type">ほのお</span><span class="type">エスパー</span></li>
+    <li class="_hidden target" data-type="ほのお ゴースト">ソウブレイズ<span class="type">ほのお</span><span class="type">ゴースト</span></li>
+    <li class="_hidden target" data-type="でんき">ズピカ<span class="type">でんき</span></li>
+    <li class="_hidden target" data-type="でんき">ハラバリー<span class="type">でんき</span></li>
+    <li class="_hidden target" data-type="でんき ひこう">カイデン<span class="type">でんき</span><span class="type">ひこう</span></li>
+    <li class="_hidden target" data-type="でんき ひこう">タイカイデン<span class="type">でんき</span><span class="type">ひこう</span></li>
+    <li class="_hidden target" data-type="あく">オラチフ<span class="type">あく</span></li>
+    <li class="_hidden target" data-type="あく">マフィティフ<span class="type">あく</span></li>
+    <li class="_hidden target" data-type="どく ノーマル">シルシュルー<span class="type">どく</span><span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="どく ノーマル">タギングル<span class="type">どく</span><span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="くさ ゴースト">アノクサ<span class="type">くさ</span><span class="type">ゴースト</span></li>
+    <li class="_hidden target" data-type="くさ ゴースト">アノホラグサ<span class="type">くさ</span><span class="type">ゴースト</span></li>
+    <li class="_hidden target" data-type="じめん くさ">ノノクラゲ<span class="type">じめん</span><span class="type">くさ</span></li>
+    <li class="_hidden target" data-type="じめん くさ">リククラゲ<span class="type">じめん</span><span class="type">くさ</span></li>
+    <li class="_hidden target" data-type="いわ">ガケガニ<span class="type">いわ</span></li>
+    <li class="_hidden target" data-type="くさ">カプサイジ<span class="type">くさ</span></li>
+    <li class="_hidden target" data-type="くさ ほのお">スコヴィラン<span class="type">くさ</span><span class="type">ほのお</span></li>
+    <li class="_hidden target" data-type="むし">シガロコ<span class="type">むし</span></li>
+    <li class="_hidden target" data-type="むし エスパー">ベラカス<span class="type">むし</span><span class="type">エスパー</span></li>
+    <li class="_hidden target" data-type="エスパー">ヒラヒナ<span class="type">エスパー</span></li>
+    <li class="_hidden target" data-type="エスパー">クエスパトラ<span class="type">エスパー</span></li>
+    <li class="_hidden target" data-type="フェアリー はがね">カヌチャン<span class="type">フェアリー</span><span class="type">はがね</span></li>
+    <li class="_hidden target" data-type="フェアリー はがね">ナカヌチャン<span class="type">フェアリー</span><span class="type">はがね</span></li>
+    <li class="_hidden target" data-type="フェアリー はがね">デカヌチャン<span class="type">フェアリー</span><span class="type">はがね</span></li>
+    <li class="_hidden target" data-type="みず">ウミディグダ<span class="type">みず</span></li>
+    <li class="_hidden target" data-type="みず">ウミトリオ<span class="type">みず</span></li>
+    <li class="_hidden target" data-type="ひこう あく">オトシドリ<span class="type">ひこう</span><span class="type">あく</span></li>
+    <li class="_hidden target" data-type="みず">ナミイルカ<span class="type">みず</span></li>
+    <li class="_hidden target" data-type="みず">イルカマン<span class="type">みず</span></li>
+    <li class="_hidden target" data-type="はがね どく">ブロロン<span class="type">はがね</span><span class="type">どく</span></li>
+    <li class="_hidden target" data-type="はがね どく">ブロロローム<span class="type">はがね</span><span class="type">どく</span></li>
+    <li class="_hidden target" data-type="ドラゴン ノーマル">モトトカゲ<span class="type">ドラゴン</span><span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="はがね">ミミズズ<span class="type">はがね</span></li>
+    <li class="_hidden target" data-type="いわ どく">キラーメ<span class="type">いわ</span><span class="type">どく</span></li>
+    <li class="_hidden target" data-type="いわ どく">キラフロル<span class="type">いわ</span><span class="type">どく</span></li>
+    <li class="_hidden target" data-type="ゴースト">ボチ<span class="type">ゴースト</span></li>
+    <li class="_hidden target" data-type="ゴースト">ハカドッグ<span class="type">ゴースト</span></li>
+    <li class="_hidden target" data-type="ひこう かくとう">カラミンゴ<span class="type">ひこう</span><span class="type">かくとう</span></li>
+    <li class="_hidden target" data-type="こおり">アルクジラ<span class="type">こおり</span></li>
+    <li class="_hidden target" data-type="こおり">ハルクジラ<span class="type">こおり</span></li>
+    <li class="_hidden target" data-type="みず エスパー">ミガルーサ<span class="type">みず</span><span class="type">エスパー</span></li>
+    <li class="_hidden target" data-type="みず">ヘイラッシャ<span class="type">みず</span></li>
+    <li class="_hidden target" data-type="ドラゴン みず">シャリタツ<span class="type">ドラゴン</span><span class="type">みず</span></li>
+    <li class="_hidden target" data-type="かくとう ゴースト">コノヨザル<span class="type">かくとう</span><span class="type">ゴースト</span></li>
+    <li class="_hidden target" data-type="どく じめん">ドオー<span class="type">どく</span><span class="type">じめん</span></li>
+    <li class="_hidden target" data-type="ノーマル エスパー">リキキリン<span class="type">ノーマル</span><span class="type">エスパー</span></li>
+    <li class="_hidden target" data-type="ノーマル">ノココッチ<span class="type">ノーマル</span></li>
+    <li class="_hidden target" data-type="あく はがね">ドドゲザン<span class="type">あく</span><span class="type">はがね</span></li>
+    <li class="_hidden target" data-type="じめん かくとう">イダイナキバ<span class="type">じめん</span><span class="type">かくとう</span></li>
+    <li class="_hidden target" data-type="フェアリー エスパー">サケブシッポ<span class="type">フェアリー</span><span class="type">エスパー</span></li>
+    <li class="_hidden target" data-type="くさ あく">アラブルタケ<span class="type">くさ</span><span class="type">あく</span></li>
+    <li class="_hidden target" data-type="ゴースト フェアリー">ハバタクカミ<span class="type">ゴースト</span><span class="type">フェアリー</span></li>
+    <li class="_hidden target" data-type="むし かくとう">チヲハウハネ<span class="type">むし</span><span class="type">かくとう</span></li>
+    <li class="_hidden target" data-type="でんき じめん">スナノケガワ<span class="type">でんき</span><span class="type">じめん</span></li>
+    <li class="_hidden target" data-type="じめん はがね">テツノワダチ<span class="type">じめん</span><span class="type">はがね</span></li>
+    <li class="_hidden target" data-type="こおり みず">テツノツツミ<span class="type">こおり</span><span class="type">みず</span></li>
+    <li class="_hidden target" data-type="かくとう でんき">テツノカイナ<span class="type">かくとう</span><span class="type">でんき</span></li>
+    <li class="_hidden target" data-type="あく ひこう">テツノコウベ<span class="type">あく</span><span class="type">ひこう</span></li>
+    <li class="_hidden target" data-type="ほのお どく">テツノドクガ<span class="type">ほのお</span><span class="type">どく</span></li>
+    <li class="_hidden target" data-type="いわ でんき">テツノイバラ<span class="type">いわ</span><span class="type">でんき</span></li>
+    <li class="_hidden target" data-type="ドラゴン こおり">セビエ<span class="type">ドラゴン</span><span class="type">こおり</span></li>
+    <li class="_hidden target" data-type="ドラゴン こおり">セゴール<span class="type">ドラゴン</span><span class="type">こおり</span></li>
+    <li class="_hidden target" data-type="ドラゴン こおり">セグレイブ<span class="type">ドラゴン</span><span class="type">こおり</span></li>
+    <li class="_hidden target" data-type="ゴースト">コレクレー<span class="type">ゴースト</span></li>
+    <li class="_hidden target" data-type="はがね ゴースト">サーフゴー<span class="type">はがね</span><span class="type">ゴースト</span></li>
+    <li class="_hidden target" data-type="あく くさ">チオンジェン<span class="type">あく</span><span class="type">くさ</span></li>
+    <li class="_hidden target" data-type="あく こおり">パオジアン<span class="type">あく</span><span class="type">こおり</span></li>
+    <li class="_hidden target" data-type="あく じめん">ディンルー<span class="type">あく</span><span class="type">じめん</span></li>
+    <li class="_hidden target" data-type="あく ほのお">イーユイ<span class="type">あく</span><span class="type">ほのお</span></li>
+    <li class="_hidden target" data-type="ドラゴン あく">トドロクツキ<span class="type">ドラゴン</span><span class="type">あく</span></li>
+    <li class="_hidden target" data-type="フェアリー かくとう">テツノブジン<span class="type">フェアリー</span><span class="type">かくとう</span></li>
+    <li class="_hidden target" data-type="かくとう ドラゴン">コライドン<span class="type">かくとう</span><span class="type">ドラゴン</span></li>
+    <li class="_hidden target" data-type="でんき ドラゴン">ミライドン<span class="type">でんき</span><span class="type">ドラゴン</span></li>
+    <li class="_hidden target" data-type="みず ドラゴン">ウネルミナモ<span class="type">みず</span><span class="type">ドラゴン</span></li>
+    <li class="_hidden target" data-type="くさ エスパー">テツノイサハ<span class="type">くさ</span><span class="type">エスパー</span></li>
   </ul>
 
   <script src="main.js"></script>
