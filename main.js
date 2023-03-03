@@ -1,20 +1,27 @@
-let list = document.getElementById('list');
+/* 
+  絞り込みで対象となったliにtargetを付与する。（初期状態では全てにtargetが付与されている）
+  targetがついたものの中でページネーションを機能させる
+*/
+
+const PER_PAGE = 10;
+
+const list = document.getElementById('list');
 const pagenation = document.getElementById('pagenation');
+const pagenationText = document.getElementById('pagenation-text')
 const typeSelect = document.getElementById('typeSelect');
-const search = document.getElementById('search');
-const searchText = document.getElementById('searchText');
-// const searchButton = document.getElementById('searchButton');
 let pageNum = 1;
-const perPage = 5;
 
 
-//pagenationを作成
-function initPagenation () {
+//pagenationを初期化
+function initPagenation() {
   let itemCount = countTarget();
-  let navMax = Math.ceil(itemCount / perPage);
+  let buttonMax = Math.ceil(itemCount / PER_PAGE);
+
   pageNum = 1;
+
+  //ページネーションのボタンを作成
   pagenation.innerHTML = '';
-  for (let i = 0; i < navMax; i++) {
+  for (let i = 0; i < buttonMax; i++) {
     const button = document.createElement('button');
     if (i === 0) button.classList.add('_current');
     button.textContent = i + 1;
@@ -23,11 +30,11 @@ function initPagenation () {
 
 
   //ページネーションのボタンにイベントを追加
-  for (let i = 0;i<pagenation.children.length;i++) {
+  for (let i = 0; i < pagenation.children.length; i++) {
     const item = pagenation.children[i];
-    item.addEventListener('click',(e) => {
+    item.addEventListener('click', (e) => {
       //._currentを付け替え
-      for (let j = 0;j < pagenation.children.length; j++) {
+      for (let j = 0; j < pagenation.children.length; j++) {
         const item = pagenation.children[j];
         item.classList.remove('_current');
       }
@@ -41,36 +48,39 @@ function initPagenation () {
     })
   }
 }
-initPagenation();
 
+//リストからtargetクラスを持つアイテムの数を返す関数
 function countTarget() {
   let result = 0;
-  for (let i = 0;i < list.children.length;i++) {
-    if(list.children[i].classList.contains('target')) result++;
+  for (let i = 0; i < list.children.length; i++) {
+    if (list.children[i].classList.contains('target')) result++;
   }
   return result;
 }
 
-function refleshList () {
-  let count = 0;
-  for (let i = 0;i<list.children.length;i++) {
+//targetのうち、表示すべきアイテムから_hiddenを除く関数
+function refleshList() {
+  let count = 0; //targetのループカウンタ
+  let start = PER_PAGE * (pageNum - 1);
+  let end = Math.min(PER_PAGE * pageNum - 1, countTarget() - 1);
+  for (let i = 0; i < list.children.length; i++) {
     const item = list.children[i];
     item.classList.add("_hidden")
     if (!item.classList.contains("target")) continue;
 
-    if( perPage * (pageNum - 1) <= count && count <= perPage * pageNum-1) {
+    if (start <= count && count <= end) {
       item.classList.remove("_hidden")
     }
     count++;
   }
+  pagenationText.innerText = `${countTarget()}件中、${start + 1} 〜 ${end + 1}件目を表示`
 }
-refleshList();
 
-
-function filterByType () {
+//セレクトボックスの値のタイプを持つポケモンにのみtargetクラスを付与
+function filterByType() {
   const type = typeSelect.value;
   //typeを含むポケモンのliにtargetクラスを付与
-  for(let i = 0;i<list.children.length;i++) {
+  for (let i = 0; i < list.children.length; i++) {
     const item = list.children[i];
 
     item.classList.remove('target');
@@ -83,25 +93,10 @@ function filterByType () {
   refleshList();
 }
 
-function filterByName() {
-  const text = searchText.value;
-  //textを含むポケモンのliにtargetクラスを付与
-  for(let i = 0;i<list.children.length;i++) {
-    const item = list.children[i];
 
-    item.classList.remove('target');
-    if (item.childNodes[0].textContent.includes(text)) {
-      item.classList.add('target')
-    }
-  }
+typeSelect.addEventListener('change', filterByType);
 
+window.addEventListener('DOMContentLoaded', () => {
   initPagenation();
   refleshList();
-}
-
-typeSelect.addEventListener('change',filterByType)
-searchButton.addEventListener('click',(e)=> {
-  e.preventDefault();
-
-  filterByName();
 })
